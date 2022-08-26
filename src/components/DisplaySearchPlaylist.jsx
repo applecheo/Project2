@@ -1,26 +1,23 @@
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const DisplaySearchPlaylist = ({ playlist }) => {
+const DisplaySearchPlaylist = ({ playlist, setSongLink }) => {
+  const [userSongChoice, setUserSongChoice] = useState("");
   const selectedSongLink = (e) => {
-    // {
-    //   const compliedSongLink = playlist.map((x) => x.strMusicVid);
-    //   console.log(compliedSongLink);
-    // }
-    const clicked = e.target.innerText;
-    console.log(clicked);
+    const userInput = e.target.innerText;
     {
-      const compliedSongName = playlist
-        .map((x) => x.strTrack)
-        .find((x) => x === clicked);
-
-      const test = playlist.filter((x) => x.strTrack === clicked);
-      console.log(test);
-      console.log(playlist);
-      console.log(compliedSongName);
+      const chosenSong = playlist
+        .filter((x) => x.strTrack === userInput)
+        .find((x) => x.strMusicVid);
+      setSongLink(chosenSong.strMusicVid);
+      setUserSongChoice(chosenSong.strTrack);
     }
   };
   return (
     <>
+      <h2>
+        Selected song: <span>{userSongChoice}</span>
+      </h2>
       <ul>
         {playlist?.map((x) => (
           <li onClick={selectedSongLink} key={uuidv4()}>
@@ -28,7 +25,6 @@ const DisplaySearchPlaylist = ({ playlist }) => {
           </li>
         ))}
       </ul>
-      {/* url cat for unique id */}
     </>
   );
 };

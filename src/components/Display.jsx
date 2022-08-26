@@ -1,14 +1,14 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useDebounce from "./UseDebounce";
 import DisplayVideo from "./DisplayVideo";
 import DisplaySearchPlaylist from "./DisplaySearchPlaylist";
 
-const Display = () => {
+const Display = ({ favorite, setFavorite }) => {
   const [input, SetInput] = useState("");
   const [artistId, setArtistId] = useState("");
   const [songLink, setSongLink] = useState("");
   const [playlist, setPlaylist] = useState([]);
+  const [artistName, SetArtistName] = useState("");
 
   const handleInput = (e) => {
     const userInput = e.target.value;
@@ -24,7 +24,7 @@ const Display = () => {
       );
       const data = await res.json();
       setArtistId(data.artists[0]?.idArtist);
-      console.log(deBounceSearchArtist);
+      SetArtistName(data);
     };
     if (deBounceSearchArtist) fetchIdData();
   }, [deBounceSearchArtist]);
@@ -35,17 +35,29 @@ const Display = () => {
         `https://theaudiodb.com/api/v1/json/2/mvid.php?i=${artistId}`
       );
       const data = await res.json();
-      setSongLink(data.mvids?.[2]?.strMusicVid);
+      setSongLink(data.mvids?.[0]?.strMusicVid);
       setPlaylist(data.mvids);
-      console.log(songLink);
     };
 
     if (artistId) fetchSongData();
   }, [artistId]);
-  //can add another element to run
+
+  const favoriteHandler = () => {
+    setFavorite((prev) => {
+      return [
+        {
+          name: artistName.artists?.[0]?.strArtist,
+          picture: artistName.artists?.[0]?.strArtistThumb,
+          biography: artistName.artists?.[0]?.strBiographyEN,
+          favorite: true,
+        },
+        ...prev,
+      ];
+    });
+  };
 
   return (
-    <div className="App">
+    <div>
       <input
         type="text"
         onChange={handleInput}
@@ -53,11 +65,14 @@ const Display = () => {
         placeholder="Artist name"
       />
 
-      <h1>{deBounceSearchArtist}</h1>
+      <h1>
+        {artistName.artists?.[0]?.strArtist}
+        <button onClick={favoriteHandler}>F</button>
+      </h1>
 
       <DisplayVideo songLink={songLink} />
 
-      <DisplaySearchPlaylist playlist={playlist} />
+      <DisplaySearchPlaylist playlist={playlist} setSongLink={setSongLink} />
     </div>
   );
 };

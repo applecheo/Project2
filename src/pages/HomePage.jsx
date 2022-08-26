@@ -1,10 +1,10 @@
 import Display from "../components/Display";
 
-const HomePage = () => {
+const HomePage = ({ favorite, setFavorite }) => {
   return (
     <h2>
-      Welcome <span>jun jie</span>
-      <Display />
+      Welcome <span>Jun Jie</span>
+      <Display favorite={favorite} setFavorite={setFavorite} />
     </h2>
   );
 };

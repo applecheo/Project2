@@ -11,7 +11,6 @@ const DisplayVideo = ({ songLink }) => {
       res[1] +
       "?ecver=1&amp;autoplay=1&amp;iv_load_policy=3&amp;rel=0&amp;showinfo=0&amp;yt:stretch=16:9&amp;autohide=1&amp";
     setDisplay(embeddedUrl);
-    console.log(embeddedUrl);
   };
   return (
     <div className="container">
