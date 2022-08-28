@@ -4,8 +4,8 @@ const DisplayVideo = ({ songLink }) => {
   const [display, setDisplay] = useState("");
   const playVideo = () => {
     const str = songLink;
-    console.log(str);
     const res = str.split("=");
+    const YOUTUBE_URL = "http//:cccc";
     const embeddedUrl =
       "https://www.youtube.com/embed/" +
       res[1] +

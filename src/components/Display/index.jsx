@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import useDebounce from "./UseDebounce";
-import DisplayVideo from "./DisplayVideo";
-import DisplaySearchPlaylist from "./DisplaySearchPlaylist";
+import useDebounce from "../../hooks/useDebounce";
+import DisplaySearchPlaylist from "../DisplaySearchPlaylist";
+import DisplayVideo from "../DisplayVideo";
 
 const Display = ({ favorite, setFavorite }) => {
   const [input, SetInput] = useState("");
@@ -18,6 +18,7 @@ const Display = ({ favorite, setFavorite }) => {
   const deBounceSearchArtist = useDebounce(input, 600);
 
   useEffect(() => {
+    //cre8 file for link const
     const fetchIdData = async () => {
       const res = await fetch(
         `https://www.theaudiodb.com/api/v1/json/2/search.php?s=${deBounceSearchArtist}`
@@ -39,15 +40,16 @@ const Display = ({ favorite, setFavorite }) => {
       setPlaylist(data.mvids);
     };
 
-    if (artistId) fetchSongData();
+    if (artistId) {
+      fetchSongData();
+    }
   }, [artistId]);
 
   const favoriteHandler = () => {
-    const UserFavorite = favorite.filter(
+    const userFavorite = favorite.filter(
       (x) => x.name === artistName.artists?.[0]?.strArtist
     );
-
-    if (UserFavorite.length === 0) {
+    if (userFavorite.length === 0) {
       setFavorite((prev) => {
         return [
           {
@@ -58,6 +60,14 @@ const Display = ({ favorite, setFavorite }) => {
           },
           ...prev,
         ];
+      });
+    } else {
+      setFavorite((prev) => {
+        const test = favorite.find(
+          (x) => x.name === artistName.artists?.[0]?.strArtist
+        );
+        test.favorite = true;
+        return [...prev];
       });
     }
   };

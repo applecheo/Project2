@@ -5,8 +5,8 @@ const Navbar = () => {
     <>
       <div style={{ display: "flex" }}>
         <h1 style={{ backgroundColor: "pink" }}>Musique</h1>
-        <Link to="/Home">Go to home page............. </Link>
-        <Link to="/Artists">View Artist............. </Link>
+        <Link to="/home">Go to home page............. </Link>
+        <Link to="/artists">View Artist............. </Link>
       </div>
     </>
   );

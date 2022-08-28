@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const ViewArtistPage = ({ favorite, setFavorite }) => {
   const [toggle, setToggle] = useState({ bio: false });
   const handleBio = () => {
     toggle.bio === true ? setToggle({ bio: false }) : setToggle({ bio: true });
-    console.log(favorite);
   };
 
   const removeFavoriteHandler = (e) => {
@@ -26,19 +25,20 @@ const ViewArtistPage = ({ favorite, setFavorite }) => {
           />
         )}
         <button onClick={handleBio}>Biography</button>
-        {toggle.bio ? (
+        {toggle.bio && (
           <p style={{ width: 400, height: 400 }}>{favorite?.[0]?.biography}</p>
-        ) : (
-          <p></p>
         )}
 
         {
           <ul>
-            {favorite.map((x) => (
-              <li onClick={removeFavoriteHandler} key={uuidv4()}>
-                {x.name}
-              </li>
-            ))}
+            {favorite.map(
+              (x) =>
+                x.favorite && (
+                  <li onClick={removeFavoriteHandler} key={uuidv4()}>
+                    {x.name}
+                  </li>
+                )
+            )}
           </ul>
         }
       </div>

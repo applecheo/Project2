@@ -12,13 +12,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route
-              path="/Home"
+              path="/home"
               element={
                 <HomePage favorite={favorite} setFavorite={setFavorite} />
               }
             />
             <Route
-              path="/Artists"
+              path="/artists"
               element={
                 <ViewArtistPage favorite={favorite} setFavorite={setFavorite} />
               }
