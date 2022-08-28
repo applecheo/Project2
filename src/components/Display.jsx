@@ -43,17 +43,23 @@ const Display = ({ favorite, setFavorite }) => {
   }, [artistId]);
 
   const favoriteHandler = () => {
-    setFavorite((prev) => {
-      return [
-        {
-          name: artistName.artists?.[0]?.strArtist,
-          picture: artistName.artists?.[0]?.strArtistThumb,
-          biography: artistName.artists?.[0]?.strBiographyEN,
-          favorite: true,
-        },
-        ...prev,
-      ];
-    });
+    const UserFavorite = favorite.filter(
+      (x) => x.name === artistName.artists?.[0]?.strArtist
+    );
+
+    if (UserFavorite.length === 0) {
+      setFavorite((prev) => {
+        return [
+          {
+            name: artistName.artists?.[0]?.strArtist,
+            picture: artistName.artists?.[0]?.strArtistThumb,
+            biography: artistName.artists?.[0]?.strBiographyEN,
+            favorite: true,
+          },
+          ...prev,
+        ];
+      });
+    }
   };
 
   return (
@@ -67,6 +73,7 @@ const Display = ({ favorite, setFavorite }) => {
 
       <h1>
         {artistName.artists?.[0]?.strArtist}
+
         <button onClick={favoriteHandler}>F</button>
       </h1>
 
