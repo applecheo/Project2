@@ -10,7 +10,7 @@ const Display = ({ favorite, setFavorite }) => {
   const [playlist, setPlaylist] = useState([]);
   const [artistName, SetArtistName] = useState("");
 
-  const handleInput = (e) => {
+  const inputHandler = (e) => {
     const userInput = e.target.value;
     SetInput(userInput);
   };
@@ -76,7 +76,7 @@ const Display = ({ favorite, setFavorite }) => {
     <div>
       <input
         type="text"
-        onChange={handleInput}
+        onChange={inputHandler}
         value={input}
         placeholder="Artist name"
       />

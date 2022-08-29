@@ -5,7 +5,6 @@ const DisplayVideo = ({ songLink }) => {
   const playVideo = () => {
     const str = songLink;
     const res = str.split("=");
-    const YOUTUBE_URL = "http//:cccc";
     const embeddedUrl =
       "https://www.youtube.com/embed/" +
       res[1] +

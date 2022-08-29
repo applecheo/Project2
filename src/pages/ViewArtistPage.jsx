@@ -1,32 +1,45 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import DropDown from "../components/DropDown";
 
 const ViewArtistPage = ({ favorite, setFavorite }) => {
-  const [toggle, setToggle] = useState({ bio: false });
-  const handleBio = () => {
-    toggle.bio === true ? setToggle({ bio: false }) : setToggle({ bio: true });
+  const [toggle, setToggle] = useState({ biography: false });
+  const biographyHandler = () => {
+    toggle.biography === true
+      ? setToggle({ biography: false })
+      : setToggle({ biography: true });
+    const artistBiography = favorite.filter((x) => x.displayArtist === true);
+    artistBiography?.[0]?.biography;
+    setToggle((prev) => ({
+      ...prev,
+      biographyText: artistBiography?.[0]?.biography,
+    }));
   };
 
   const removeFavoriteHandler = (e) => {
     const selected = e.target.innerText;
     setFavorite((prev) => {
-      const test = favorite.find((x) => x.name === selected);
-      test.favorite = false;
+      const unFavorite = favorite.find((x) => x.name === selected);
+      unFavorite.favorite = false;
       return [...prev];
     });
   };
   return (
     <>
       <div>
-        {favorite?.[0]?.picture && (
-          <img
-            style={{ width: 400, height: 400 }}
-            src={favorite?.[0]?.picture}
-          />
+        {favorite.map(
+          (x) =>
+            x.displayArtist === true && (
+              <img
+                src={x.picture}
+                style={{ width: 400, height: 400 }}
+                key={uuidv4()}
+              />
+            )
         )}
-        <button onClick={handleBio}>Biography</button>
-        {toggle.bio && (
-          <p style={{ width: 400, height: 400 }}>{favorite?.[0]?.biography}</p>
+        <button onClick={biographyHandler}>View Bio</button>
+        {toggle.biography === true && (
+          <p style={{ width: 400, height: 400 }}>{toggle.biographyText}</p>
         )}
 
         {
@@ -42,6 +55,7 @@ const ViewArtistPage = ({ favorite, setFavorite }) => {
           </ul>
         }
       </div>
+      <DropDown favorite={favorite} setFavorite={setFavorite} />
     </>
   );
 };
