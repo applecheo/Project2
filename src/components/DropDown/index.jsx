@@ -18,8 +18,8 @@ const DropDown = ({ favorite, setFavorite }) => {
   const toggling = () => {
     setIsOpen(!isOpen);
     setFavorite(() => {
-      const reset = favorite.map((x) => ({ ...x, displayArtist: false }));
-      return reset;
+      const resetChoice = favorite.map((x) => ({ ...x, displayArtist: false }));
+      return resetChoice;
     });
   };
 
