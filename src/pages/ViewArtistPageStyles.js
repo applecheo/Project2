@@ -1,26 +1,60 @@
 import styled from "styled-components";
 
-export const Input = styled.input`
-  padding: 0.5em;
-  margin: 2em;
-  color: black;
-  background: papayawhip;
-  border: none;
-  border-radius: 3px;
+export const ContainerStyled = styled("div")`
+  color: azure;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+
+  p {
+    font-size: 20px;
+    padding: 5px;
+    margin: 0 20px;
+  }
+  p:hover {
+    font-size: 40px;
+  }
 `;
 
-export const InputDivStyled = styled.div`
-  background: ${({ theme }) => theme.color.header};
-  width: 350px;
-  height: 450px;
-  text-align: center;
+export const ListOfFavorite = styled("div")`
+  flex-shrink: 0;
+  margin: 5px;
+  h3 {
+    font-size: 40px;
+    margin: 0;
+  }
+  .favorite {
+    list-style: none;
+    font-size: 35px;
+    position: relative;
+    right: 35px;
+  }
+  .favorite:hover {
+    text-decoration: line-through;
+    color: red;
+    cursor: pointer;
+  }
+  ul {
+    margin-top: 0;
+  }
+`;
+
+export const BiographyStyled = styled("div")`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto;
-  border-radius: 25px;
-  border: 30px solid black;
-  padding: 20px;
+  border-radius: 2.5px;
+  flex-shrink: 0;
+
+  img {
+    background-color: ${({ theme }) => theme.color.header};
+    padding: 30px;
+    border-radius: 2.5px;
+    border-style: solid;
+    width: 350px;
+    height: 350px;
+  }
 
   button {
     align-items: center;
@@ -54,7 +88,7 @@ export const InputDivStyled = styled.div`
     touch-action: manipulation;
     vertical-align: middle;
     will-change: transform, opacity;
-    margin: 5px;
+    margin: 10px;
   }
 
   button:hover {

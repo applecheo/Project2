@@ -1,13 +1,21 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { NavbarStyled } from "./styles";
 
-const Navbar = () => {
+const Navbar = (showInput = { showInput }) => {
+  let navigate = useNavigate();
+  const navigateToPageHome = () => {
+    navigate("/home");
+  };
+  const navigateToPageArtist = () => {
+    navigate("/artists");
+  };
   return (
     <>
-      <div style={{ display: "flex" }}>
-        <h1 style={{ backgroundColor: "pink" }}>Musique</h1>
-        <Link to="/home">Go to home page............. </Link>
-        <Link to="/artists">View Artist............. </Link>
-      </div>
+      <NavbarStyled>
+        <h1>Musique</h1>
+        <button onClick={navigateToPageHome}>Home</button>
+        <button onClick={navigateToPageArtist}>Artist</button>
+      </NavbarStyled>
     </>
   );
 };

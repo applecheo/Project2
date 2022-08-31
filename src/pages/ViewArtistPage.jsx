@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import DropDown from "../components/DropDown";
-
+import {
+  BiographyStyled,
+  ContainerStyled,
+  ListOfFavorite,
+} from "./ViewArtistPageStyles";
 const ViewArtistPage = ({ favorite, setFavorite }) => {
   const [toggle, setToggle] = useState({ biography: false });
   const biographyHandler = () => {
@@ -26,36 +30,37 @@ const ViewArtistPage = ({ favorite, setFavorite }) => {
   };
   return (
     <>
-      <div>
-        {favorite.map(
-          (x) =>
-            x.displayArtist === true && (
-              <img
-                src={x.picture}
-                style={{ width: 400, height: 400 }}
-                key={uuidv4()}
-              />
-            )
-        )}
-        <button onClick={biographyHandler}>View Bio</button>
-        {toggle.biography === true && (
-          <p style={{ width: 400, height: 400 }}>{toggle.biographyText}</p>
-        )}
+      <ContainerStyled>
+        <ListOfFavorite>
+          <h3>Favorite Artists</h3>
+          <DropDown favorite={favorite} setFavorite={setFavorite} />
+          {
+            <ul>
+              {favorite.map(
+                (x) =>
+                  x.favorite && (
+                    <li
+                      onClick={removeFavoriteHandler}
+                      key={uuidv4()}
+                      className="favorite"
+                    >
+                      {x.name}
+                    </li>
+                  )
+              )}
+            </ul>
+          }
+        </ListOfFavorite>
+        <BiographyStyled>
+          {favorite.map(
+            (x) =>
+              x.displayArtist === true && <img src={x.picture} key={uuidv4()} />
+          )}
+          <button onClick={biographyHandler}>View Bio</button>
+        </BiographyStyled>
 
-        {
-          <ul>
-            {favorite.map(
-              (x) =>
-                x.favorite && (
-                  <li onClick={removeFavoriteHandler} key={uuidv4()}>
-                    {x.name}
-                  </li>
-                )
-            )}
-          </ul>
-        }
-      </div>
-      <DropDown favorite={favorite} setFavorite={setFavorite} />
+        {toggle.biography === true && <p>{toggle.biographyText}</p>}
+      </ContainerStyled>
     </>
   );
 };

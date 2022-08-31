@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 
 const DisplayVideo = ({ songLink }) => {
   const [display, setDisplay] = useState("");
+
   useEffect(() => {
     const playVideo = () => {
       const str = songLink;
-      const res = str.split("=");
+      const res = str?.split("=");
       const embeddedUrl =
         "https://www.youtube.com/embed/" +
-        res[1] +
+        res?.[1] +
         "?ecver=1&amp;autoplay=1&amp;iv_load_policy=3&amp;rel=0&amp;showinfo=0&amp;yt:stretch=16:9&amp;autohide=1&amp";
       setDisplay(embeddedUrl);
     };
@@ -17,7 +18,6 @@ const DisplayVideo = ({ songLink }) => {
 
   return (
     <div className="container">
-      {/* <button onClick={playVideo}>Play</button> */}
       {songLink && (
         <iframe
           width="400px"

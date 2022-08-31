@@ -55,7 +55,7 @@ const DisplaySearchPlaylist = ({ playlist, setSongLink }) => {
         return [...prev];
       });
     }
-    setSongLink(addToQueue[0].strMusicVid);
+    setSongLink(addToQueue?.[0]?.strMusicVid);
   };
 
   useEffect(() => {
@@ -64,30 +64,33 @@ const DisplaySearchPlaylist = ({ playlist, setSongLink }) => {
   }, [addToQueue]);
   return (
     <>
+      <p>
+        Next in queue: <span>{displayQueuedSong}</span>
+      </p>
       <h2>
         Selected song: <span>{userSongChoice}</span>
       </h2>
-      <button onClick={playNextVideo}>Play Next</button>
-      <ul>
-        <p>Queued songs</p>
-        {addToQueue.map((x) => (
-          <li key={uuidv4()}>{x.strTrack}</li>
-        ))}
-      </ul>
-      <p>
-        Queue: <span>{displayQueuedSong}</span>
-      </p>
-
-      <ul>
-        {playlist?.map((albumDetails) => (
-          <div key={uuidv4()}>
-            <li onClick={selectedSongLink}>{albumDetails.strTrack}</li>
-            <button key={uuidv4()} onClick={addToQueueHandler(albumDetails)}>
-              Queue
-            </button>
-          </div>
-        ))}
-      </ul>
+      <div>
+        <button onClick={playNextVideo}>Play Next</button>
+        <ul>
+          <p>Queued songs</p>
+          {addToQueue.map((x) => (
+            <li key={uuidv4()}>{x.strTrack}</li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <ul>
+          {playlist?.map((albumDetails) => (
+            <div key={uuidv4()}>
+              <li onClick={selectedSongLink}>{albumDetails.strTrack}</li>
+              <button key={uuidv4()} onClick={addToQueueHandler(albumDetails)}>
+                Queue
+              </button>
+            </div>
+          ))}
+        </ul>
+      </div>
     </>
   );
 };

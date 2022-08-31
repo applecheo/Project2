@@ -1,9 +1,9 @@
 import Display from "../components/Display";
 
-const HomePage = ({ favorite, setFavorite }) => {
+const HomePage = ({ favorite, setFavorite, name }) => {
   return (
     <h2>
-      Welcome <span>Jun Jie</span>
+      Welcome <span>{name}!</span>
       <Display favorite={favorite} setFavorite={setFavorite} />
     </h2>
   );

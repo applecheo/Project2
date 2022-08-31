@@ -36,7 +36,7 @@ const Display = ({ favorite, setFavorite }) => {
         `https://theaudiodb.com/api/v1/json/2/mvid.php?i=${artistId}`
       );
       const data = await res.json();
-      setSongLink(data.mvids?.[0]?.strMusicVid);
+
       setPlaylist(data.mvids);
     };
 
@@ -81,11 +81,11 @@ const Display = ({ favorite, setFavorite }) => {
         placeholder="Artist name"
       />
 
-      <h1>
-        {artistName.artists?.[0]?.strArtist}
+      <div>
+        <h2>{artistName.artists?.[0]?.strArtist}</h2>
 
-        <button onClick={favoriteHandler}>F</button>
-      </h1>
+        <button onClick={favoriteHandler}>⭐</button>
+      </div>
 
       <DisplayVideo songLink={songLink} />
 

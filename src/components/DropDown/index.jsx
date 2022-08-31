@@ -40,7 +40,7 @@ const DropDown = ({ favorite, setFavorite }) => {
     <>
       <DropDownContainer>
         <DropDownHeader onClick={toggling}>
-          {selectedOption || "Favorite Artists"}
+          {selectedOption || "Select Artist"}
         </DropDownHeader>
         {isOpen && (
           <DropDownListContainer>

@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
 export const DropDownContainer = styled("div")`
-  width: 12.5em;
-  margin: 0 auto;
-  text-align: center;
+  width: 10.5em;
+  /* margin: 0 auto; */
 `;
 
 export const DropDownHeader = styled("div")`
@@ -12,20 +11,23 @@ export const DropDownHeader = styled("div")`
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
   font-weight: 500;
   font-size: 1.3rem;
-  color: #3faffa;
-  background: #ffffff;
+  border-radius: 4px;
+  color: ${({ theme }) => theme.color.body};
+  background: ${({ theme }) => theme.color.unique};
+  text-align: center;
+  cursor: pointer;
 `;
 
 export const DropDownListContainer = styled("div")``;
 
 export const DropDownList = styled("ul")`
-  padding: 0;
-  margin: 0;
-  padding-left: 1em;
-  background: #ffffff;
-  border: 2px solid #e5e5e5;
+  padding: 0.5px;
+  margin-bottom: 2px;
+  text-align: center;
   box-sizing: border-box;
-  color: #3faffa;
+  border-radius: 4px;
+  color: ${({ theme }) => theme.color.body};
+  background: ${({ theme }) => theme.color.unique};
   font-size: 1.3rem;
   font-weight: 500;
   &:first-child {
@@ -36,4 +38,8 @@ export const DropDownList = styled("ul")`
 export const ListItem = styled("li")`
   list-style: none;
   margin-bottom: 0.8em;
+  cursor: pointer;
+  :hover {
+    color: azure;
+  }
 `;
