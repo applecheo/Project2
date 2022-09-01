@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { NavbarStyled } from "./styles";
+import { ButtonStyled, NavbarStyled } from "./styles";
 
 const Navbar = (showInput = { showInput }) => {
   let navigate = useNavigate();
@@ -12,9 +12,13 @@ const Navbar = (showInput = { showInput }) => {
   return (
     <>
       <NavbarStyled>
-        <h1>Musique</h1>
-        <button onClick={navigateToPageHome}>Home</button>
-        <button onClick={navigateToPageArtist}>Artist</button>
+        <h1>
+          <span>🎵</span>Musique
+        </h1>
+        <ButtonStyled>
+          <button onClick={navigateToPageHome}>Home</button>
+          <button onClick={navigateToPageArtist}>Artist</button>
+        </ButtonStyled>
       </NavbarStyled>
     </>
   );

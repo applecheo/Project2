@@ -1,11 +1,14 @@
 import Display from "../components/Display";
+import { HomePageStyled } from "./HomePageStyles";
 
 const HomePage = ({ favorite, setFavorite, name }) => {
   return (
-    <h2>
-      Welcome <span>{name}!</span>
+    <HomePageStyled>
+      <h2 className="welcome">
+        Welcome <span>{name}!</span>
+      </h2>
       <Display favorite={favorite} setFavorite={setFavorite} />
-    </h2>
+    </HomePageStyled>
   );
 };
 

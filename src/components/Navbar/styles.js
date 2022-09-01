@@ -6,12 +6,16 @@ export const NavbarStyled = styled("div")`
   color: ${({ theme }) => theme.color.unique};
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 
   h1 {
     width: 180px;
+    float: left;
+    margin-left: 20px;
   }
-
+`;
+export const ButtonStyled = styled("div")`
+  margin-right: 600px;
   button {
     align-items: center;
     appearance: none;

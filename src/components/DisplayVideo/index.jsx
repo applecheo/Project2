@@ -20,13 +20,13 @@ const DisplayVideo = ({ songLink }) => {
     <div className="container">
       {songLink && (
         <iframe
-          width="650px"
-          height="450px"
+          width="750px"
+          height="550px"
           src={`${display}`}
           frameBorder="0"
           loading="lazy"
           scrolling="no"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen;gyroscope; picture-in-picture"
         />
       )}
     </div>

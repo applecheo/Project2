@@ -56,7 +56,9 @@ const ViewArtistPage = ({ favorite, setFavorite }) => {
             (x) =>
               x.displayArtist === true && <img src={x.picture} key={uuidv4()} />
           )}
-          <button onClick={biographyHandler}>View Bio</button>
+          {favorite.length >= 1 && (
+            <button onClick={biographyHandler}>View Bio</button>
+          )}
         </BiographyStyled>
 
         {toggle.biography === true && <p>{toggle.biographyText}</p>}

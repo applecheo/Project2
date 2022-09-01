@@ -4,11 +4,19 @@ export const DisplaySearchPlaylistStyled = styled("div")`
   display: flex;
   color: azure;
 `;
-export const QueuedSongStyled = styled("div")``;
+export const QueuedSongStyled = styled("div")`
+  font-size: 32px;
+  margin-left: 30px;
+  li {
+    font-size: 28px;
+  }
+`;
 
 export const SearchedSongStyled = styled("div")`
   margin-top: 25px;
   text-align: center;
+  font-size: 24px;
+
   ul {
     columns: 2;
     -webkit-columns: 2;
@@ -17,8 +25,13 @@ export const SearchedSongStyled = styled("div")`
   }
   li {
     list-style: none;
+    transition: transform 0.2s;
   }
+  li:hover {
+    cursor: pointer;
 
+    transform: scale(1.25);
+  }
   button {
     align-items: center;
     appearance: none;
@@ -33,7 +46,7 @@ export const SearchedSongStyled = styled("div")`
     font-family: Roboto, sans-serif;
     font-size: 0.875rem;
     font-weight: 500;
-    height: 36px;
+    height: 28px;
     justify-content: center;
     letter-spacing: 0.0892857em;
     line-height: normal;

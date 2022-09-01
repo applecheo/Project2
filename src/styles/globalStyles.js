@@ -13,7 +13,7 @@ button:hover{
     animation: shake 0.5s;
 
   
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
 }
 
 @keyframes shake {

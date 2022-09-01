@@ -91,11 +91,17 @@ const Display = ({ favorite, setFavorite }) => {
           <NameOfArtistStyled>
             <h2>{artistName.artists?.[0]?.strArtist}</h2>
 
-            <button onClick={favoriteHandler}>⭐</button>
+            {artistName.artists?.[0]?.strArtist && (
+              <button onClick={favoriteHandler}>⭐</button>
+            )}
           </NameOfArtistStyled>
           <DisplayVideo songLink={songLink} />
         </DisplayStyled>
-        <DisplaySearchPlaylist playlist={playlist} setSongLink={setSongLink} />
+        <DisplaySearchPlaylist
+          playlist={playlist}
+          setSongLink={setSongLink}
+          artistName={artistName}
+        />
       </DisplayContainerStyled>
     </>
   );

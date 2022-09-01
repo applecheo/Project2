@@ -17,7 +17,7 @@ export const InputDivStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto;
+  margin: 80px auto;
   border-radius: 25px;
   border: 30px solid black;
   padding: 20px;

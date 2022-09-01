@@ -13,6 +13,7 @@ export const InputStyled = styled("input")`
 export const DisplayContainerStyled = styled("div")`
   display: flex;
   align-items: flex-start;
+  justify-content: space-around;
 `;
 
 export const DisplayStyled = styled("div")`

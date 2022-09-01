@@ -6,7 +6,7 @@ import {
   SearchedSongStyled,
 } from "./styles";
 
-const DisplaySearchPlaylist = ({ playlist, setSongLink }) => {
+const DisplaySearchPlaylist = ({ playlist, setSongLink, artistName }) => {
   const [userSongChoice, setUserSongChoice] = useState("");
   const [addToQueue, setAddToQueue] = useState([]);
   const [displayQueuedSong, setDisplayQueuedSong] = useState("");
@@ -71,9 +71,12 @@ const DisplaySearchPlaylist = ({ playlist, setSongLink }) => {
     <>
       <DisplaySearchPlaylistStyled>
         <SearchedSongStyled>
-          <button onClick={playNextVideo} className="playNextButton">
-            Play Next
-          </button>
+          {artistName.artists?.[0]?.strArtist && (
+            <button onClick={playNextVideo} className="playNextButton">
+              Play Next
+            </button>
+          )}
+
           <ul>
             {playlist?.map((albumDetails) => (
               <div key={uuidv4()}>
@@ -90,7 +93,7 @@ const DisplaySearchPlaylist = ({ playlist, setSongLink }) => {
         </SearchedSongStyled>
         <QueuedSongStyled>
           <ol>
-            <p>Queued songs</p>
+            {artistName.artists?.[0]?.strArtist && <p>Queued songs</p>}
             {addToQueue.map((x) => (
               <li key={uuidv4()}>{x.strTrack}</li>
             ))}
