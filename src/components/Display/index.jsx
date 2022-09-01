@@ -2,6 +2,12 @@ import { useEffect, useState } from "react";
 import useDebounce from "../../hooks/useDebounce";
 import DisplaySearchPlaylist from "../DisplaySearchPlaylist";
 import DisplayVideo from "../DisplayVideo";
+import {
+  DisplayContainerStyled,
+  DisplayStyled,
+  InputStyled,
+  NameOfArtistStyled,
+} from "./styles";
 
 const Display = ({ favorite, setFavorite }) => {
   const [input, SetInput] = useState("");
@@ -73,24 +79,25 @@ const Display = ({ favorite, setFavorite }) => {
   };
 
   return (
-    <div>
-      <input
+    <>
+      <InputStyled
         type="text"
         onChange={inputHandler}
         value={input}
         placeholder="Artist name"
       />
+      <DisplayContainerStyled>
+        <DisplayStyled>
+          <NameOfArtistStyled>
+            <h2>{artistName.artists?.[0]?.strArtist}</h2>
 
-      <div>
-        <h2>{artistName.artists?.[0]?.strArtist}</h2>
-
-        <button onClick={favoriteHandler}>⭐</button>
-      </div>
-
-      <DisplayVideo songLink={songLink} />
-
-      <DisplaySearchPlaylist playlist={playlist} setSongLink={setSongLink} />
-    </div>
+            <button onClick={favoriteHandler}>⭐</button>
+          </NameOfArtistStyled>
+          <DisplayVideo songLink={songLink} />
+        </DisplayStyled>
+        <DisplaySearchPlaylist playlist={playlist} setSongLink={setSongLink} />
+      </DisplayContainerStyled>
+    </>
   );
 };
 

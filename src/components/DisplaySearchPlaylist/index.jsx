@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import {
+  DisplaySearchPlaylistStyled,
+  QueuedSongStyled,
+  SearchedSongStyled,
+} from "./styles";
 
 const DisplaySearchPlaylist = ({ playlist, setSongLink }) => {
   const [userSongChoice, setUserSongChoice] = useState("");
@@ -64,33 +69,37 @@ const DisplaySearchPlaylist = ({ playlist, setSongLink }) => {
   }, [addToQueue]);
   return (
     <>
-      <p>
+      <DisplaySearchPlaylistStyled>
+        <SearchedSongStyled>
+          <button onClick={playNextVideo} className="playNextButton">
+            Play Next
+          </button>
+          <ul>
+            {playlist?.map((albumDetails) => (
+              <div key={uuidv4()}>
+                <li onClick={selectedSongLink}>{albumDetails.strTrack}</li>
+                <button
+                  key={uuidv4()}
+                  onClick={addToQueueHandler(albumDetails)}
+                >
+                  Queue
+                </button>
+              </div>
+            ))}
+          </ul>
+        </SearchedSongStyled>
+        <QueuedSongStyled>
+          <ol>
+            <p>Queued songs</p>
+            {addToQueue.map((x) => (
+              <li key={uuidv4()}>{x.strTrack}</li>
+            ))}
+          </ol>
+        </QueuedSongStyled>
+      </DisplaySearchPlaylistStyled>
+      {/* <p>
         Next in queue: <span>{displayQueuedSong}</span>
-      </p>
-      <h2>
-        Selected song: <span>{userSongChoice}</span>
-      </h2>
-      <div>
-        <button onClick={playNextVideo}>Play Next</button>
-        <ul>
-          <p>Queued songs</p>
-          {addToQueue.map((x) => (
-            <li key={uuidv4()}>{x.strTrack}</li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <ul>
-          {playlist?.map((albumDetails) => (
-            <div key={uuidv4()}>
-              <li onClick={selectedSongLink}>{albumDetails.strTrack}</li>
-              <button key={uuidv4()} onClick={addToQueueHandler(albumDetails)}>
-                Queue
-              </button>
-            </div>
-          ))}
-        </ul>
-      </div>
+      </p> */}
     </>
   );
 };

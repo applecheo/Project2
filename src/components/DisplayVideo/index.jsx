@@ -20,8 +20,8 @@ const DisplayVideo = ({ songLink }) => {
     <div className="container">
       {songLink && (
         <iframe
-          width="400px"
-          height="300px"
+          width="650px"
+          height="450px"
           src={`${display}`}
           frameBorder="0"
           loading="lazy"
