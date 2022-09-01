@@ -6,10 +6,13 @@ import {
   SearchedSongStyled,
 } from "./styles";
 
-const DisplaySearchPlaylist = ({ playlist, setSongLink, artistName }) => {
-  const [userSongChoice, setUserSongChoice] = useState("");
+const DisplaySearchPlaylist = ({
+  playlist,
+  setSongLink,
+  artistName,
+  setDisplayQueuedSong,
+}) => {
   const [addToQueue, setAddToQueue] = useState([]);
-  const [displayQueuedSong, setDisplayQueuedSong] = useState("");
 
   const selectedSongLink = (e) => {
     const userInput = e.target.innerText;
@@ -18,7 +21,6 @@ const DisplaySearchPlaylist = ({ playlist, setSongLink, artistName }) => {
         .filter((x) => x.strTrack === userInput)
         .find((x) => x.strMusicVid);
       setSongLink(chosenSong?.strMusicVid);
-      setUserSongChoice(chosenSong?.strTrack);
     }
   };
 
@@ -100,9 +102,6 @@ const DisplaySearchPlaylist = ({ playlist, setSongLink, artistName }) => {
           </ol>
         </QueuedSongStyled>
       </DisplaySearchPlaylistStyled>
-      <p>
-        Next in queue: <span>{displayQueuedSong}</span>
-      </p>
     </>
   );
 };

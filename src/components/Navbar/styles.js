@@ -30,7 +30,7 @@ export const ButtonStyled = styled("div")`
     color: black;
     cursor: pointer;
     display: inline-flex;
-    font-family: Roboto, sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 0.875rem;
     font-weight: 500;
     height: 36px;

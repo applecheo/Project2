@@ -5,7 +5,7 @@ import DisplayVideo from "../DisplayVideo";
 import {
   DisplayContainerStyled,
   DisplayStyled,
-  InputStyled,
+  InputAndNextInQueue,
   NameOfArtistStyled,
 } from "./styles";
 
@@ -15,6 +15,7 @@ const Display = ({ favorite, setFavorite }) => {
   const [songLink, setSongLink] = useState("");
   const [playlist, setPlaylist] = useState([]);
   const [artistName, SetArtistName] = useState("");
+  const [displayQueuedSong, setDisplayQueuedSong] = useState("");
 
   const inputHandler = (e) => {
     const userInput = e.target.value;
@@ -80,12 +81,17 @@ const Display = ({ favorite, setFavorite }) => {
 
   return (
     <>
-      <InputStyled
-        type="text"
-        onChange={inputHandler}
-        value={input}
-        placeholder="Artist name"
-      />
+      <InputAndNextInQueue>
+        <input
+          type="text"
+          onChange={inputHandler}
+          value={input}
+          placeholder="Artist name"
+        />
+        <p>
+          Next In Queue: <span>{displayQueuedSong}</span>
+        </p>
+      </InputAndNextInQueue>
       <DisplayContainerStyled>
         <DisplayStyled>
           <NameOfArtistStyled>
@@ -101,6 +107,7 @@ const Display = ({ favorite, setFavorite }) => {
           playlist={playlist}
           setSongLink={setSongLink}
           artistName={artistName}
+          setDisplayQueuedSong={setDisplayQueuedSong}
         />
       </DisplayContainerStyled>
     </>

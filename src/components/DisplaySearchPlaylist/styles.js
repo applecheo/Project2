@@ -8,7 +8,8 @@ export const QueuedSongStyled = styled("div")`
   font-size: 32px;
   margin-left: 30px;
   li {
-    font-size: 28px;
+    font-size: 20px;
+    margin-top: 10px;
   }
 `;
 
@@ -43,7 +44,7 @@ export const SearchedSongStyled = styled("div")`
     color: black;
     cursor: pointer;
     display: inline-flex;
-    font-family: Roboto, sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 0.875rem;
     font-weight: 500;
     height: 28px;

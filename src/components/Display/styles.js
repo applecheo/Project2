@@ -1,13 +1,39 @@
 import styled from "styled-components";
 
-export const InputStyled = styled("input")`
+export const InputAndNextInQueue = styled("div")`
   display: flex;
-  padding: 0.5em;
-  margin: 2em;
-  color: #f5f5dc;
-  background: #1f1013;
-  border: none;
-  border-radius: 3px;
+  justify-content: flex-start;
+  align-items: center;
+  input {
+    display: flex;
+    padding: 0.5em;
+    margin: 0 25px;
+    color: #f5f5dc;
+    background: #1f1013;
+    border: none;
+    border-radius: 3px;
+  }
+  p {
+    color: #f5f5dc;
+    transition: 0.5s;
+    animation: queue 10s infinite;
+    font-size: 15px;
+
+    @keyframes queue {
+      0% {
+        transform: translateX(10px);
+      }
+      49% {
+        transform: translateX(500px);
+      }
+      50% {
+        transform: translateX(500px);
+      }
+      100% {
+        transform: translateX(10px);
+      }
+    }
+  }
 `;
 
 export const DisplayContainerStyled = styled("div")`

@@ -3,11 +3,11 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 body{
 
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
    margin-right: 8px;
     height: 100vh;
     font-weight: 100;
