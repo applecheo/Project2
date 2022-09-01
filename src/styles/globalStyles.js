@@ -1,12 +1,21 @@
+// https://www.sliderrevolution.com/resources/css-animated-background/ Created by beshoy ekram
+
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
 body{
-    background-color: ${({ theme }) => theme.color.background};
-    font-family: 'Roboto', sans-serif,
-   
+
+    font-family: 'Roboto', sans-serif;
+   margin-right: 8px;
+    height: 100vh;
+    font-weight: 100;
+    background: radial-gradient(#a23982,#1f1013);
+    -webkit-animation: fadeIn 1 1s ease-out;
+    -moz-animation: fadeIn 1 1s ease-out;
+    -o-animation: fadeIn 1 1s ease-out;
+    animation: fadeIn 1 1s ease-out;
 
 }
 button:hover{

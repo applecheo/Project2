@@ -4,8 +4,8 @@ export const InputStyled = styled("input")`
   display: flex;
   padding: 0.5em;
   margin: 2em;
-  color: black;
-  background: papayawhip;
+  color: #f5f5dc;
+  background: #1f1013;
   border: none;
   border-radius: 3px;
 `;
@@ -17,7 +17,7 @@ export const DisplayContainerStyled = styled("div")`
 `;
 
 export const DisplayStyled = styled("div")`
-  color: azure;
+  color: #f5f5dc;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -30,7 +30,7 @@ export const NameOfArtistStyled = styled("div")`
   align-items: center;
 
   h2 {
-    font-size: 60px;
+    font-size: 55px;
   }
 
   button {

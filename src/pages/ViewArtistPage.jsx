@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import DropDown from "../components/DropDown";
 import {
@@ -19,7 +19,9 @@ const ViewArtistPage = ({ favorite, setFavorite }) => {
       biographyText: artistBiography?.[0]?.biography,
     }));
   };
-
+  useEffect(() => {
+    biographyHandler();
+  }, [favorite]);
   const removeFavoriteHandler = (e) => {
     const selected = e.target.innerText;
     setFavorite((prev) => {

@@ -13,6 +13,9 @@ export const NavbarStyled = styled("div")`
     float: left;
     margin-left: 20px;
   }
+  span {
+    margin-right: 5px;
+  }
 `;
 export const ButtonStyled = styled("div")`
   margin-right: 600px;
@@ -48,7 +51,7 @@ export const ButtonStyled = styled("div")`
     touch-action: manipulation;
     vertical-align: middle;
     will-change: transform, opacity;
-    margin: 5px;
+    margin: 14px;
   }
 
   button:hover {

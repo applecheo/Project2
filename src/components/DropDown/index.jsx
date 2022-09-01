@@ -39,9 +39,7 @@ const DropDown = ({ favorite, setFavorite }) => {
   return (
     <>
       <DropDownContainer>
-        <DropDownHeader onClick={toggling}>
-          {selectedOption || "Select Artist"}
-        </DropDownHeader>
+        <DropDownHeader onClick={toggling}>{"Select Artist"}</DropDownHeader>
         {isOpen && (
           <DropDownListContainer>
             <DropDownList>

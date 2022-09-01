@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerStyled = styled("div")`
-  color: azure;
+  color: #f5f5dc;
   margin-top: 50px;
   display: flex;
   justify-content: space-evenly;
@@ -48,7 +48,7 @@ export const BiographyStyled = styled("div")`
   flex-shrink: 0;
 
   img {
-    background-color: ${({ theme }) => theme.color.header};
+    /* background-color: ${({ theme }) => theme.color.header}; */
     padding: 30px;
     border-radius: 2.5px;
     border-style: solid;

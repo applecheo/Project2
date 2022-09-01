@@ -100,9 +100,9 @@ const DisplaySearchPlaylist = ({ playlist, setSongLink, artistName }) => {
           </ol>
         </QueuedSongStyled>
       </DisplaySearchPlaylistStyled>
-      {/* <p>
+      <p>
         Next in queue: <span>{displayQueuedSong}</span>
-      </p> */}
+      </p>
     </>
   );
 };

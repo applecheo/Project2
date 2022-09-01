@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import Background from "./components/Background";
 import UserInput from "./components/UserInput";
 
 import Layout from "./Layout";
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Background />
       <GlobalStyles />
       <div className="App">
         <BrowserRouter>

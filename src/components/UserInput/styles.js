@@ -3,24 +3,32 @@ import styled from "styled-components";
 export const Input = styled.input`
   padding: 0.5em;
   margin: 2em;
-  color: black;
-  background: papayawhip;
+  color: azure;
+  background: #1f1013;
   border: none;
   border-radius: 3px;
 `;
 
 export const InputDivStyled = styled.div`
-  background: ${({ theme }) => theme.color.header};
-  width: 350px;
-  height: 450px;
+  width: 300px;
+  height: 250px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 80px auto;
   border-radius: 25px;
-  border: 30px solid black;
+  border: 15px solid #1f1013;
   padding: 20px;
+
+  h4 {
+    font-size: 30px;
+    margin: 15px 0;
+  }
+
+  p {
+    font-size: 18px;
+  }
 
   button {
     align-items: center;
