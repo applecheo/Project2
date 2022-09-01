@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Input, InputDivStyled } from "./styles";
+import { InputDivStyled, InputStyled } from "./styles";
 
 const UserInput = ({ setName }) => {
   const [showInput, setShowInput] = useState(true);
@@ -19,7 +19,7 @@ const UserInput = ({ setName }) => {
         <InputDivStyled>
           <h4>Welcome to Musique</h4>
           <p>Track And Listen To Your Favorite Artist!</p>
-          <Input ref={userInput} placeholder="Enter Your Name!" />
+          <InputStyled ref={userInput} placeholder="Enter Your Name!" />
           <button onClick={navigateToHome}>Let's go</button>
         </InputDivStyled>
       )}

@@ -5,7 +5,7 @@ import DisplayVideo from "../DisplayVideo";
 import {
   DisplayContainerStyled,
   DisplayStyled,
-  InputAndNextInQueue,
+  InputAndNextInQueueStyled,
   NameOfArtistStyled,
 } from "./styles";
 
@@ -70,18 +70,18 @@ const Display = ({ favorite, setFavorite }) => {
       });
     } else {
       setFavorite((prev) => {
-        const test = favorite.find(
+        const isFavorite = favorite.find(
           (x) => x.name === artistName.artists?.[0]?.strArtist
         );
-        test.favorite = true;
+        isFavorite.favorite = true;
         return [...prev];
       });
     }
   };
-
+  const favoriteArtist = artistName.artists?.[0]?.strArtist;
   return (
     <>
-      <InputAndNextInQueue>
+      <InputAndNextInQueueStyled>
         <input
           type="text"
           onChange={inputHandler}
@@ -91,15 +91,13 @@ const Display = ({ favorite, setFavorite }) => {
         <p>
           Next In Queue: <span>{displayQueuedSong}</span>
         </p>
-      </InputAndNextInQueue>
+      </InputAndNextInQueueStyled>
       <DisplayContainerStyled>
         <DisplayStyled>
           <NameOfArtistStyled>
-            <h2>{artistName.artists?.[0]?.strArtist}</h2>
+            <h2>{favoriteArtist}</h2>
 
-            {artistName.artists?.[0]?.strArtist && (
-              <button onClick={favoriteHandler}>⭐</button>
-            )}
+            {favoriteArtist && <button onClick={favoriteHandler}>⭐</button>}
           </NameOfArtistStyled>
           <DisplayVideo songLink={songLink} />
         </DisplayStyled>

@@ -50,24 +50,26 @@ const DisplaySearchPlaylist = ({
   };
 
   const playNextVideo = () => {
-    const filtered = addToQueue.filter((x) => x?.PlayingNext === false);
-    setAddToQueue(filtered);
+    const isNotPlayingNext = addToQueue.filter((x) => x?.PlayingNext === false);
+    setAddToQueue(isNotPlayingNext);
 
-    if (filtered.length >= 1) {
+    if (isNotPlayingNext.length >= 1) {
       setAddToQueue((prev) => {
-        const getNameOfSong = filtered.find(
-          (x) => x.strTrack === filtered[0].strTrack
+        const getNameOfSong = isNotPlayingNext.find(
+          (x) => x.strTrack === isNotPlayingNext[0].strTrack
         );
         getNameOfSong.PlayingNext = true;
         return [...prev];
       });
     }
-    setSongLink(addToQueue?.[0]?.strMusicVid);
+    const NextInQueueLink = addToQueue?.[0]?.strMusicVid;
+    setSongLink(NextInQueueLink);
   };
 
   useEffect(() => {
-    const displayName = addToQueue.find((x) => x?.PlayingNext === true);
-    setDisplayQueuedSong(displayName?.strTrack);
+    const isPlayingNext = addToQueue.find((x) => x?.PlayingNext === true);
+    const playingNextSong = isPlayingNext?.strTrack;
+    setDisplayQueuedSong(playingNextSong);
   }, [addToQueue]);
   return (
     <>

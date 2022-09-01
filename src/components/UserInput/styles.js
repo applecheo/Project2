@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Input = styled.input`
+export const InputStyled = styled.input`
   padding: 0.5em;
   margin: 2em;
   color: azure;

@@ -17,7 +17,7 @@ export const ContainerStyled = styled("div")`
   }
 `;
 
-export const ListOfFavorite = styled("div")`
+export const ListOfFavoriteStyled = styled("div")`
   flex-shrink: 0;
   margin: 5px;
   h3 {
@@ -48,7 +48,6 @@ export const BiographyStyled = styled("div")`
   flex-shrink: 0;
 
   img {
-    /* background-color: ${({ theme }) => theme.color.header}; */
     padding: 30px;
     border-radius: 2.5px;
     border-style: solid;

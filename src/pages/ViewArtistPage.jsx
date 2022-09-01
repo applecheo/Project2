@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import DropDown from "../components/DropDown";
 import {
   BiographyStyled,
   ContainerStyled,
-  ListOfFavorite,
+  ListOfFavoriteStyled,
 } from "./ViewArtistPageStyles";
 const ViewArtistPage = ({ favorite, setFavorite }) => {
   const [toggle, setToggle] = useState({ biography: false });
@@ -13,15 +13,13 @@ const ViewArtistPage = ({ favorite, setFavorite }) => {
       ? setToggle({ biography: false })
       : setToggle({ biography: true });
     const artistBiography = favorite.filter((x) => x.displayArtist === true);
-    artistBiography?.[0]?.biography;
+    const getArtistBiography = artistBiography?.[0]?.biography;
     setToggle((prev) => ({
       ...prev,
-      biographyText: artistBiography?.[0]?.biography,
+      biographyText: getArtistBiography,
     }));
   };
-  useEffect(() => {
-    biographyHandler();
-  }, [favorite]);
+
   const removeFavoriteHandler = (e) => {
     const selected = e.target.innerText;
     setFavorite((prev) => {
@@ -33,7 +31,7 @@ const ViewArtistPage = ({ favorite, setFavorite }) => {
   return (
     <>
       <ContainerStyled>
-        <ListOfFavorite>
+        <ListOfFavoriteStyled>
           <h3>Favorite Artists</h3>
           <DropDown favorite={favorite} setFavorite={setFavorite} />
           {
@@ -52,7 +50,7 @@ const ViewArtistPage = ({ favorite, setFavorite }) => {
               )}
             </ul>
           }
-        </ListOfFavorite>
+        </ListOfFavoriteStyled>
         <BiographyStyled>
           {favorite.map(
             (x) =>
